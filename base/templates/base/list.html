@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+{% block content%}
+
+
+<div class="container mt-5">
+    <a class="btn btn-secondary mb-3" href="{% url 'index' %}">Back</a>
+<div>
+    <div class="mt-2">
+        <a class="btn btn-primary mt-3" href="{% url 'add' %}">Add new</a>
+    </div>
+</div>
+    <h3 class="mt-5">Task Lists:</h3>
+    <hr>
+    
+    {% for task in tasks %}
+    <div>
+        <a class="btn btn-sm btn-info" href="{% url 'update' task.id %}">Edit</a>
+        <a class="btn btn-sm btn-danger" href="{% url 'delete' task.id %}">Delete</a>
+
+        {% if task.complete == True %}
+        <strike>{{task}}</strike>
+        {% else %}
+        {{task}}
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

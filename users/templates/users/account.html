@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h2>Account details</h2>
+    <hr>
+    <a href="{% url 'index' %}">Back</a>
+    <a href="{% url 'delete-profile' profile.id %}">Delete</a>
+    <a href="{% url 'edit' %}">Edit</a>
+
+    <hr>
+    <div class="container">
+        <h4>Name:</h4>
+        <p>{{profile.name}}</p>
+        <h4>Email:</h4>
+        <p>{{profile.email}}</p>
+        <h4>Username:</h4>
+        <p>{{profile.username}}</p>
+    </div>
+</div>
+{% endblock %}

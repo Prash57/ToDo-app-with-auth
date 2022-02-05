@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+{% block content%}
+
+
+<div class="container mt-5">
+    <a class="btn btn-secondary mb-3" href="{% url 'list' %}">Back</a>
+    <h2>Add Tasks:</h2>
+    <hr>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form.title}}
+        <input class="btn btn-info" type="submit" type="submit" name="Create Task">
+    </form>
+</div>
+{% endblock %}

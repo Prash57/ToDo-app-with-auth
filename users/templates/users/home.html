@@ -1,0 +1,59 @@
+{% extends 'index.html' %}
+
+{% block content %}
+{% if messages %}
+
+{% for message in messages %}
+<div class="alert alert--{{message.tags}}">
+    <p class="alert__message">{{ message }}</p>
+    <button class="alert__close">x</button>
+</div>
+{% endfor %}
+
+{% endif %}
+
+<div class="container mt-5">
+
+
+    {% if request.user.is_authenticated %}
+    <div class="mt-5">
+        <h3>Account</h3>
+        <a class="btn btn-primary mt-3" href="{% url 'account' %}">Account</a>
+    </div>
+    <div>
+        <h3 class="mt-5">Logout</h3>
+        <a class="btn btn-primary mt-3" href="{% url 'logout' %}">Logout</a>
+    </div>
+    <div class="mt-5">
+        <h3>ToDo Lists</h3>
+        <a class="btn btn-primary mt-3" href="{% url 'list' %}">ToDo's</a>
+    </div>
+    {% else %}
+    <div>
+        <h3>Login</h3>
+        <a class="btn btn-primary mt-3" href="{% url 'login' %}">Login</a>
+    </div>
+    <div class="mt-5">
+        <h3>Register</h3>
+        <a class="btn btn-primary mt-3" href="{% url 'register' %}">Register</a>
+    </div>
+
+    {% endif %}
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        hljs.highlightAll();
+    });
+
+
+    let alertWrapper = document.querySelector('.alert')
+    let alertClose = document.querySelector('.alert__close')
+
+    if (alertWrapper) {
+        alertClose.addEventListener('click', () =>
+            alertWrapper.style.display = 'none'
+        )
+    }
+
+</script>
+{% endblock %}
